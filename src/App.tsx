@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
 import GlobalStyle from './styles/globalStyles';
 import CreatorFormComponent from './pages/anmeldung';
 import { CreatorProvider } from './context/FormContext/CreatorContext';
 import AdminComponent from './pages/admin/adminDashboard';
+import AdminLoginPage from './pages/admin/loginPage';
 import NoMatch from './pages/noMatch';
 // overviews
 import DashboardComponent from './pages/admin/dashboardComponent';
@@ -21,9 +21,9 @@ function App() {
       <GlobalStyle />
       <CreatorProvider>
         <Routes>
-        <Route index element={ <Home />} />
-        <Route path="/" element={<Home />} />
-          <Route path="anmeldung" element={<CreatorFormComponent />} />
+        <Route index element={<CreatorFormComponent />} />
+          <Route path="admin/login" element={<AdminLoginPage />} />
+
           <Route path="admin" element={<AdminComponent />}>
             <Route index element={<DashboardComponent />} />
               <Route index element={<NoMatch />} />

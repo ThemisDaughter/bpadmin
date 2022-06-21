@@ -1,16 +1,22 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, Navigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { StyledAdminWindow, StyledSidebar, StyledNav, StyledToggleContainer } from '../../styles/styledAdminComponents';
 import AdminSidebar from '../../components/adminComponents/adminSidebar';
 const AdminComponent = () => {
 
+
+  const redirect = true;
   const [isSidebarToggled, setIsSidebarToggled] = useState(true);
 
 
   return (
-    <StyledAdminWindow>
+
+    redirect
+      ? <Navigate replace to='/admin/login' />
+      : (
+        <StyledAdminWindow>
       <AnimatePresence>
     {
       isSidebarToggled
@@ -39,7 +45,7 @@ const AdminComponent = () => {
       <div className='main'>
         <Outlet />
       </div>
-    </StyledAdminWindow>
+    </StyledAdminWindow>)
   );
 }
 

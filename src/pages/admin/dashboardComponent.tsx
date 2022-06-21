@@ -10,8 +10,9 @@ const DashboardComponent = () => {
 
   useEffect(() => {
     const getCreators = async () => {
-      const response = await fetch(`http://localhost:5000/creators/new`);
+      const response = await fetch(`http://localhost:5000/admin/creators/new`);
       const data = await response.json();
+      console.log('thats where the data should be displayed >>>>>>>>>>>>>>>>>>>>>>>>>>><<', data)
       setNewCreators(data)
     }
     getCreators()
@@ -19,7 +20,7 @@ const DashboardComponent = () => {
 
   const acceptCreator = async (creator: string) => {
     // const success = await fetch(`${process.env.BASE_URL}/creator/${creator}/accept`)
-    const success = await fetch(`http://localhost:5000/creator/${creator}/accept`,
+    const success = await fetch(`http://localhost:5000/admin/creator/${creator}/accept`,
       { method: 'PATCH' });
     return success;
   }
