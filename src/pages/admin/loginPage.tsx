@@ -1,34 +1,28 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { StyledFormBackground, StyledLogin } from 'styles/styledFormComponents/index';
 
 const AdminLoginPage = () => {
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const navigate = useNavigate();
 
 // await session sid and store in local storage
   
   const handleSubmit = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
-    // fetch('http://localhost:5000/admin/login', {
-    //   method: 'POST',
-    //   body: JSON.stringify({username, password}),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
     try {
-      const response = await axios.post(`http://localhost:5000/admin/login`, {username: username, password: password});
-    //  const session = await axios({
-    //     method: 'post',
-    //     url: 'http://localhost:5000/admin/login',
-    //     data: {
-    //       username: 'Fred',
-    //       password: 'Flintstone'
-    //     }
-    //   });
-       console.log(response.data)
+      const { data } = await axios.post(`http://localhost:5000/admin/login`, {username: username, password: password});
+      if (data) {
+        sessionStorage.setItem("user role", data['user role']);
+        navigate('/admin')
+      } else {
+        console.log('wrong password')
+      }
+
+       console.log(data)
     } catch (err) {
       console.error(err)
     }

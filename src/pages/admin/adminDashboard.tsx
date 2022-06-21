@@ -1,19 +1,18 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { Link, Outlet, Navigate } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
-import { StyledAdminWindow, StyledSidebar, StyledNav, StyledToggleContainer } from '../../styles/styledAdminComponents';
+import { StyledAdminWindow, StyledToggleContainer } from '../../styles/styledAdminComponents';
 import AdminSidebar from '../../components/adminComponents/adminSidebar';
 const AdminComponent = () => {
 
+  const isAuthorised = sessionStorage.getItem('user role');
 
-  const redirect = true;
   const [isSidebarToggled, setIsSidebarToggled] = useState(true);
-
 
   return (
 
-    redirect
+    !isAuthorised
       ? <Navigate replace to='/admin/login' />
       : (
         <StyledAdminWindow>
