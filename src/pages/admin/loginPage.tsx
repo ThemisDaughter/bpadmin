@@ -14,15 +14,21 @@ const AdminLoginPage = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`http://localhost:5000/admin/login`, {username: username, password: password});
+      // const formData = new FormData();
+      // formData.append('username', username);
+      // formData.append('password', password);
+      const { data } = await axios.post(`http://localhost:5000/admin/login`, {
+        username: username, password: password
+      }, { withCredentials: true });
+      console.log(data);
       if (data) {
-        sessionStorage.setItem("user role", data['user role']);
+        console.log('data from server  ', data)
+        sessionStorage.setItem("user role", data.userRole);
         navigate('/admin')
       } else {
+        //TODO: display a message on form
         console.log('wrong password')
       }
-
-       console.log(data)
     } catch (err) {
       console.error(err)
     }

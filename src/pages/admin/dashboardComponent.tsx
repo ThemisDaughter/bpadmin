@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { StyledDashboardGrid } from 'styles/styledAdminComponents';
 import CreatorField from 'components/adminComponents/CreatorField';
 import CreatorT from 'types/creatorTypes';
+import axios from 'axios';
 
 const DashboardComponent = () => {
 
+  const navigate = useNavigate();
   const [newCreators, setNewCreators] = useState<CreatorT[]>([]);
 
   useEffect(() => {
     const getCreators = async () => {
-      const response = await fetch(`http://localhost:5000/admin/creators/new`);
-      const data = await response.json();
-      console.log('thats where the data should be displayed >>>>>>>>>>>>>>>>>>>>>>>>>>><<', data)
-      setNewCreators(data)
+      const res = await axios.get(`http://localhost:5000/admin/creators/new`, {withCredentials: true});
+      console.log('thats where the data should be displayed >>>>>>>>>>>>>>>>>>>>>>>>>>><<',res.data)
+      if(res.data.message) navigate('/admin/unauthorised')
+      setNewCreators(res.data)
     }
     getCreators()
   }, []);
