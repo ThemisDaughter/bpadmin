@@ -6,6 +6,6 @@ background-color: white;
 box-shadow: 2px 2px 10px grey;
 border-radius: 3px;
 margin: 1rem;
-min-height: 500px;
+// min-height: 500px;
 width: 800px;
 `

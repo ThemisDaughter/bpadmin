@@ -9,25 +9,26 @@ import NoMatch from './pages/noMatch';
 import DashboardComponent from './pages/admin/dashboardComponent';
 import AdminCreators from 'pages/admin/adminCreators';
 // new
-import AdminBusinessComponent from './pages/admin/adminBusiness';
+import AdminBusinessesComponent from './pages/admin/adminBusinesses';
 import AdminCampaignComponent from './pages/admin/adminCampaign';
 // update
 import AdminCreatorComponent from './pages/admin/adminCreator';
+import { isExternalModuleNameRelative } from "typescript";
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{position: 'relative'}}>
       <GlobalStyle />
       <CreatorProvider>
         <Routes>
         <Route index element={<CreatorFormComponent />} />
           <Route path="admin/login" element={<AdminLoginPage />} />
 
-          <Route path="admin" element={<AdminComponent />}>
+          <Route path="admin" element={<AdminComponent />} >
             <Route index element={<DashboardComponent />} />
               <Route index element={<NoMatch />} />
-              <Route path="businesses" element={<AdminBusinessComponent />} />
+              <Route path="businesses" element={<AdminBusinessesComponent />} />
               <Route path="campaigns" element={<AdminCampaignComponent />} />
               <Route path="creators" element={<AdminCreators />} />
               <Route path="creator/:creatorId" element={ <AdminCreatorComponent />} />

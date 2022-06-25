@@ -5,7 +5,7 @@ import FormContactI from '../components/formComponents/FormContactI';
 import FormConfirm from '../components/formComponents/FormConfirm';
 import CreatorContext from '../context/FormContext/CreatorContext';
 import { StyledPaper } from '../styles/styledPaper';
-import { StyledFormBackground, StyledButtonsContainer, StyledFormBtn } from '../styles/styledFormComponents';
+import { StyledFormBackground, StyledButtonsContainer } from '../styles/styledFormComponents';
 
 const AnmeldungPage = () => {
 
@@ -24,7 +24,7 @@ const AnmeldungPage = () => {
   
 
   return (
-    <StyledFormBackground>
+    <StyledFormBackground >
       {
         isLoading ? (
           <div>
@@ -43,11 +43,11 @@ const AnmeldungPage = () => {
             }
           
         <StyledButtonsContainer>
-            <StyledFormBtn className='left' onClick={handleClickBack}>zurück</StyledFormBtn>
+            <button className='left' onClick={handleClickBack}>zurück</button>
             {
               stage === 3
-              ? <StyledFormBtn><input type='submit' value='bestätigen' /></StyledFormBtn>
-              : <StyledFormBtn className='right' onClick={ handleClickForward }>weiter</StyledFormBtn>
+              ? <button><input type='submit' value='bestätigen' /></button>
+              : <button className='right' onClick={ handleClickForward }>weiter</button>
             }
         </StyledButtonsContainer>
         </form>

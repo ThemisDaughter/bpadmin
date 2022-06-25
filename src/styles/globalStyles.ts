@@ -2,8 +2,15 @@ import { createGlobalStyle } from "styled-components";
 
 export const globalVars = {
   brandColor: '#5485b2',
-  primaryColor: 'black'
-
+  primaryColor: 'black',
+  lightBg: 'rgb(245, 255, 250)',
+  seethroughBg: 'rgba(245, 255, 250, 0.8)',
+  breakpoint: {
+    xs: '480px',
+    sm: '768px',
+    md: '992px',
+    lg: '1200px'
+  }
 };
 
 const GlobalStyle = createGlobalStyle`

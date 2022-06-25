@@ -1,12 +1,18 @@
 import { useContext } from 'react';
 import { StyledFormField, StyledFormGrid, StyledFormHeading, StyledInputLabel, StyledTextInput } from '../../styles/styledFormComponents';
-import { StyledTextArea } from 'styles/styledFormComponents';
+import { format, subYears, addYears, subDays } from 'date-fns'
 
 import CreatorContext from 'context/FormContext/CreatorContext';
 
 const FormPersonalI = () => {
 
   const { personal, updatePersonal } = useContext(CreatorContext);
+
+  const todayDate = new Date();
+  const minDate = format(subYears(todayDate, 100), 'yyyy-MM-dd');
+  const maxDate = format(subYears(todayDate, 12), 'yyyy-MM-dd');
+
+  console.log(minDate, maxDate)
 
   return (
     <StyledFormGrid>
@@ -35,7 +41,7 @@ const FormPersonalI = () => {
       </StyledFormField>
       <StyledFormField span="1">
         <StyledInputLabel>Geburtstag</StyledInputLabel>
-        <StyledTextInput type='date' value={personal.creator_birthday} id="creator_birthday" onChange={updatePersonal}></StyledTextInput>
+        <StyledTextInput max={ maxDate.toString() } min={minDate.toString()} type='date' value={personal.creator_birthday} id="creator_birthday" onChange={updatePersonal}></StyledTextInput>
       </StyledFormField>
     </StyledFormGrid>
   )

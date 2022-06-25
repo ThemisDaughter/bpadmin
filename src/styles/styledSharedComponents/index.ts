@@ -1,3 +1,3 @@
 import StyledSocialMediaList from "./styledSocialMediaList";
-
-export { StyledSocialMediaList };
+import StyledStack from "./styledStack";
+export { StyledSocialMediaList, StyledStack };
