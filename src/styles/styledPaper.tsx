@@ -8,4 +8,5 @@ border-radius: 3px;
 margin: 1rem;
 // min-height: 500px;
 width: 800px;
+scroll-behavior: smooth;
 `

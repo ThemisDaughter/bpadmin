@@ -9,7 +9,7 @@ import { StyledFormBackground, StyledButtonsContainer } from '../styles/styledFo
 
 const AnmeldungPage = () => {
 
-  const { personal, submitForm, isLoading } = useContext(CreatorContext);
+  const { submitForm, isLoading } = useContext(CreatorContext);
   const [stage, setStage] = useState(0);
 
   const handleClickBack = (e: React.MouseEvent<HTMLButtonElement>) => {

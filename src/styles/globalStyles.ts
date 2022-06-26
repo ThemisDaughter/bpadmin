@@ -23,6 +23,7 @@ body {
   overflow-x: hidden;
   background: #5485b2;
   font-family: sans-serif;
+  scroll-behavior: smooth;
 }
 h1, h2, h3 {
   font-family: 'Alfa Slab One', serif;

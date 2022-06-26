@@ -6,9 +6,9 @@ export interface PersonalT {
   creator_postcode: string;
   creator_city: string;
   creator_birthday: string;
+  creatorCategories?: string[];
 }
 export interface SocialT {
-  creatorCategories: string[];
   creator_insta: boolean;
   creator_insta_name: string;
   creator_twitter: boolean;

@@ -11,5 +11,6 @@ import { StyledInputLabel } from './styledInputLabel';
 import { StyledTextArea } from './styledTextArea';
 import { StyledTextInput } from './styledTextInput';
 import { StyledLogin } from './styledLogin';
+import {StyledTag} from './StyledTag'
 
-export { StyledAccountNames, StyledAccountNameIcon, StyledAccountNameInput, StyledAccountSelector, StyledFormBackground, StyledButtonsContainer, StyledFormField, StyledFormGrid, StyledFormHeading, StyledLogin, StyledInputLabel, StyledTextArea, StyledTextInput };
+export { StyledAccountNames, StyledAccountNameIcon, StyledAccountNameInput, StyledAccountSelector, StyledFormBackground, StyledButtonsContainer, StyledFormField, StyledFormGrid, StyledFormHeading, StyledLogin, StyledInputLabel, StyledTag, StyledTextArea, StyledTextInput };

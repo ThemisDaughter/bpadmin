@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const StyledAccountSelector = styled.div`
+export const StyledAccountSelector = styled(motion.div)`
 display: flex;
 align-items: center;
 justify-content: space-evenly;
 grid-column: span 4;
 font-size: 1.4rem;
-background-color: black;
-color: white;
+// background-color: black;
+// color: white;
 .hidden {
   display: none;
 }

@@ -56,7 +56,7 @@ const AdminLoginPage = () => {
 
           </input>
           <label htmlFor='password'>password</label>
-          <input id='password' value={password} onChange={ (e) => handlePasswordInput(e)}>
+          <input id='password' type='password' value={password} onChange={ (e) => handlePasswordInput(e)}>
 
         </input>
         <input type='submit' value='submit'></input>
