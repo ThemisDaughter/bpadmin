@@ -89,7 +89,7 @@ const FormSocialI = () => {
         <StyledAccountNames>
           {
           // map through the media array and have the components indexed in an object, for each of the components, 
-            media.map(el => {
+            media.length > 0 && media.map(el => {
               return(
                 <motion.div key={el} layoutId={el}>
                 {
