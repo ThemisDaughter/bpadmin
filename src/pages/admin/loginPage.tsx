@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledErrorMessage, StyledFormBackground, StyledLogin } from 'styles/styledFormComponents/index';
@@ -14,18 +13,12 @@ const AdminLoginPage = () => {
   
   const handleSubmit = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
-    try {
       const data = await adminLogin({ username, password });
-      if (data) {
-        console.log('data from server  ', data)
-        sessionStorage.setItem("user role", data.userRole);
-        navigate('/admin')
-      } else {
-        //TODO: display a message on form
-        setIsLoginFailed(true)
-      }
-    } catch (err) {
-      console.error(err)
+    if (data) {
+      console.log('data from server  ', data)
+      sessionStorage.setItem("user role", data.userRole);
+      navigate('/admin')
+     
     }
   }
 

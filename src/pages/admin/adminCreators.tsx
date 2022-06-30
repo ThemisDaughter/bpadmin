@@ -16,7 +16,7 @@ const AdminCreators = () => {
 
   return (
     <div>
-      <h4>creeators shoold be hyre</h4>
+      <h4>creators</h4>
       {
        creators && creators.map(cr => <div>{ cr.creator_first_name }</div>)
       }
