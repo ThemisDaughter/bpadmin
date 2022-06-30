@@ -1,20 +1,16 @@
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 import { StyledAdminWindow, StyledToggleContainer } from '../../styles/styledAdminComponents';
 import AdminSidebar from '../../components/adminComponents/adminSidebar';
 const AdminComponent = () => {
 
-  const isAuthorised = sessionStorage.getItem('user role');
-
   const [isSidebarToggled, setIsSidebarToggled] = useState(true);
 
   return (
 
-    !isAuthorised
-      ? <Navigate replace to='/admin/login' />
-      : (
+     
         <StyledAdminWindow>
       <AnimatePresence>
     {
@@ -45,7 +41,7 @@ const AdminComponent = () => {
         <Outlet />
       </div>
     </StyledAdminWindow>)
-  );
+  
 }
 
 export default AdminComponent;

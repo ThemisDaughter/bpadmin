@@ -1,6 +1,7 @@
 import { createContext, useState, ReactNode } from 'react';
-import { PersonalT, SocialT, ContactT } from './creatorContextTypes';
-
+import { PersonalT, SocialT, ContactT, ContextValue } from './creatorContextTypes';
+import CategoryT from 'types/categoryTypes';
+import creatorApi from 'helpers/apiService/creator.service';
 
 const personalInfo:PersonalT = {
   creator_first_name: '',
@@ -8,7 +9,7 @@ const personalInfo:PersonalT = {
   creator_address: '',
   creator_postcode: '',
   creator_city: '',
-  creator_birthday: '2000-01-01'
+  creator_birthday: ''
 }
 const socialInfo:SocialT = {
   creator_insta: false,
@@ -32,33 +33,21 @@ const contactInfo:ContactT = {
 }
 
 
-type ContextValue = {
-  personal: PersonalT;
-  updatePersonal: (e:React.ChangeEvent<HTMLInputElement>) => void;
-  social: SocialT;
-  updateSocial: (e:React.ChangeEvent<HTMLInputElement>) => void;
-  contact: ContactT;
-  updateContact: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
-  updateCategories: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  submitForm: (e: React.FormEvent<HTMLFormElement>) => void;
-  isLoading: Boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
-  // update = () => {}
-}
-
 
 const CreatorContext = createContext<ContextValue>(null!);
 export default CreatorContext;
 
-export const CreatorProvider= ({ children }: { children: ReactNode }) => {
+export const CreatorProvider = ({ children }: { children: ReactNode }) => {
+  
   
   const [personal, setPersonal] = useState(personalInfo);
   const [social, setSocial] = useState(socialInfo);
   const [contact, setContact] = useState(contactInfo);
   const [creatorCategories, setCreatorCategories] = useState<string[]>([]);
 
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isUserError, setIsUserError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
   
   const updatePersonal = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -84,15 +73,18 @@ export const CreatorProvider= ({ children }: { children: ReactNode }) => {
   }
 
 
-    const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+    const submitForm = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setIsLoading(true);
       personal.creatorCategories = creatorCategories;
-      console.log('result: ' + JSON.stringify({ ...personal, ...social, ...contact }))
+      const res = { ...personal, ...social, ...contact }
+      const success = await creatorApi.postCreator(res);
+      success ? setIsLoading(false)
+        : setIsSuccess(true)
     }
   
   return (
-    <CreatorContext.Provider value={{ personal, updatePersonal, social, updateSocial, contact, updateContact, updateCategories, submitForm, isLoading, setIsLoading}} >
+    <CreatorContext.Provider value={{ personal, updatePersonal, social, updateSocial,  setSocial, contact, updateContact, updateCategories,creatorCategories, submitForm, isLoading, isSuccess, isUserError, setIsUserError}} >
      { children }
     </CreatorContext.Provider>
     )

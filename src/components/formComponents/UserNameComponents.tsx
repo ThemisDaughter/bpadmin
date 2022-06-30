@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import CreatorContext from 'context/FormContext/CreatorContext';
-import { StyledFormField, StyledInputLabel, StyledTextInput } from 'styles/styledFormComponents';
+import { StyledErrorMessage, StyledFormField, StyledInputLabel, StyledTextInput } from 'styles/styledFormComponents';
 
 
 export const InstaComponent = () => {
@@ -8,7 +8,8 @@ export const InstaComponent = () => {
   return (
     <StyledFormField>
     <StyledInputLabel>Instagram Link</StyledInputLabel>
-    <StyledTextInput type='text' required value={social.creator_insta_name} id="creator_insta_name" onChange={ e => updateSocial(e) }></StyledTextInput>
+      <StyledTextInput type='text' required value={social.creator_insta_name} id="creator_insta_name" onChange={e => updateSocial(e)}></StyledTextInput>
+      <StyledErrorMessage id="creator_insta_name_error"></StyledErrorMessage>
   </StyledFormField>
   )
 }
@@ -17,7 +18,8 @@ export const TiktokComponent = () => {
   return (
     <StyledFormField>
     <StyledInputLabel>Tiktok Link</StyledInputLabel>
-    <StyledTextInput type='text' required value={social.creator_tiktok_name} id="creator_tiktok_name" onChange={ e => updateSocial(e) }></StyledTextInput>
+      <StyledTextInput type='text' required value={social.creator_tiktok_name} id="creator_tiktok_name" onChange={e => updateSocial(e)}></StyledTextInput>
+      <StyledErrorMessage id="creator_tiktok_name_error"></StyledErrorMessage>
   </StyledFormField>
   )
 }
@@ -27,7 +29,8 @@ export const YoutubeComponent = () => {
     <StyledFormField>
     <StyledInputLabel>Youtube Link</StyledInputLabel>
     <StyledTextInput type='text' required value={social.creator_youtube_name} id="creator_youtube_name" onChange={ e => updateSocial(e) }></StyledTextInput>
-  </StyledFormField>
+    <StyledErrorMessage id="creator_youtube_name_error"></StyledErrorMessage>
+    </StyledFormField>
   )
 }
 export const LinkedinComponent = () => {
@@ -36,6 +39,7 @@ export const LinkedinComponent = () => {
     <StyledFormField>
     <StyledInputLabel>Linkedin Link</StyledInputLabel>
     <StyledTextInput type='text' required value={social.creator_linkedin_name} id="creator_linkedin_name" onChange={ e => updateSocial(e) }></StyledTextInput>
-  </StyledFormField>
+    <StyledErrorMessage id="creator_linkedin_name_error"></StyledErrorMessage>
+    </StyledFormField>
   )
 }

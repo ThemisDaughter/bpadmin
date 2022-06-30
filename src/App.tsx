@@ -13,7 +13,6 @@ import AdminBusinessesComponent from './pages/admin/adminBusinesses';
 import AdminCampaignComponent from './pages/admin/adminCampaign';
 // update
 import AdminCreatorComponent from './pages/admin/adminCreator';
-import { isExternalModuleNameRelative } from "typescript";
 
 
 function App() {
@@ -24,7 +23,6 @@ function App() {
         <Routes>
         <Route index element={<CreatorFormComponent />} />
           <Route path="admin/login" element={<AdminLoginPage />} />
-
           <Route path="admin" element={<AdminComponent />} >
             <Route index element={<DashboardComponent />} />
               <Route index element={<NoMatch />} />

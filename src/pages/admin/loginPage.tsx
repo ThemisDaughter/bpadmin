@@ -1,35 +1,28 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAxios from 'hooks/useAxios';
-import { StyledFormBackground, StyledLogin } from 'styles/styledFormComponents/index';
+import { StyledErrorMessage, StyledFormBackground, StyledLogin } from 'styles/styledFormComponents/index';
+import { adminLogin } from 'helpers/apiService/admin.servics';
 
 const AdminLoginPage = () => {
 
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [isLoginFailed, setIsLoginFailed] = useState(false);
   const navigate = useNavigate();
 
-
-// await session sid and store in local storage
   
   const handleSubmit = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
     try {
-      // const formData = new FormData();
-      // formData.append('username', username);
-      // formData.append('password', password);
-      const { data } = await axios.post(`http://localhost:5000/admin/login`, {
-        username: username, password: password
-      }, { withCredentials: true });
-      console.log(data);
+      const data = await adminLogin({ username, password });
       if (data) {
         console.log('data from server  ', data)
         sessionStorage.setItem("user role", data.userRole);
         navigate('/admin')
       } else {
         //TODO: display a message on form
-        console.log('wrong password')
+        setIsLoginFailed(true)
       }
     } catch (err) {
       console.error(err)
@@ -60,6 +53,11 @@ const AdminLoginPage = () => {
 
         </input>
         <input type='submit' value='submit'></input>
+        {
+          isLoginFailed
+            ? <StyledErrorMessage>Anmeldung Fehlgeschlagen.</StyledErrorMessage>
+            : null
+        }
         </StyledLogin>
     </StyledFormBackground>
   )

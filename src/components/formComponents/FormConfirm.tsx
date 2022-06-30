@@ -8,7 +8,7 @@ import {StyledConfirmationSection} from 'styles/styledFormComponents/styledConfi
 
 
 const FormConfirm = () => {
-  const { personal, social, contact } = useContext(CreatorContext);
+  const { personal, social, isLoading, contact } = useContext(CreatorContext);
 
   return (
     <StyledFormGrid>

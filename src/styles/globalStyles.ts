@@ -13,6 +13,7 @@ export const globalVars = {
   }
 };
 
+
 const GlobalStyle = createGlobalStyle`
 body {
   position: relative;
