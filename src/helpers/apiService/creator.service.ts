@@ -5,7 +5,7 @@ const creatorApi: any = {};
 
 creatorApi.postCreator = async (creatorData: CreatorT) => {
   try {
-    const response = await axios.post(`http://localhost:5000/creators`, creatorData);
+    const response = await axios.post(`https://brand-placement-admin.herokuapp.com/creators`, creatorData);
     response && console.log(response)
     return response;
   } catch(err) {
@@ -15,7 +15,7 @@ creatorApi.postCreator = async (creatorData: CreatorT) => {
 
 // post creator route is separate on creatorform page. since it's a publicly accessible part, it seemed misplaced here.
 creatorApi.getCreators  = async () => {
-  const response = await axios.get(`http://localhost:5000/admin/creators`, { withCredentials: true });
+  const response = await axios.get(`https://brand-placement-admin.herokuapp.com/admin/creators`, { withCredentials: true });
   return response
 }
 

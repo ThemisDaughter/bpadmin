@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { StyledDashboardGrid } from 'styles/styledAdminComponents';
 import CreatorField from 'components/adminComponents/CreatorField';
 import CreatorT from 'types/creatorTypes';
-import useAxios from 'hooks/useAxios';
 import axios from 'axios';
 
 const DashboardComponent = () => {
@@ -40,9 +39,9 @@ const DashboardComponent = () => {
   // @ts-ignore
   // fetchCreators && setNewCreators(fetchCreators.response);
 
-  const acceptCreator = async (creator: string) => {
+  const acceptCreator = async (creatorId: string) => {
     // const success = await fetch(`${process.env.BASE_URL}/creator/${creator}/accept`)
-    const success = await fetch(`http://localhost:5000/admin/creator/${creator}/accept`,
+    const success = await fetch(`https://brand-placement-admin.herokuapp.com/admin/creator/${creatorId}/accept`,
       { method: 'PATCH' });
     return success;
   }
