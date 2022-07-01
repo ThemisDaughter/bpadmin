@@ -8,6 +8,7 @@ const AdminLoginPage = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isLoginFailed, setIsLoginFailed] = useState(false);
+  
   const navigate = useNavigate();
 
   
@@ -19,6 +20,8 @@ const AdminLoginPage = () => {
       sessionStorage.setItem("user role", data.userRole);
       navigate('/admin')
      
+    } else {
+      setIsLoginFailed(true)
     }
   }
 

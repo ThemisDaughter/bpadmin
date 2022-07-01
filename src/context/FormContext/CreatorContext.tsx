@@ -1,6 +1,5 @@
 import { createContext, useState, ReactNode } from 'react';
 import { PersonalT, SocialT, ContactT, ContextValue } from './creatorContextTypes';
-import CategoryT from 'types/categoryTypes';
 import creatorApi from 'helpers/apiService/creator.service';
 
 const personalInfo:PersonalT = {

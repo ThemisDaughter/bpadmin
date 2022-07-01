@@ -14,7 +14,6 @@ import { LayoutGroup, motion } from 'framer-motion';
 import { StyledGridField } from 'styles/styledAdminComponents';
 // social media components (they are repetitive, if I knew how to pass through the FaIcons only one component would be needed)
 import {InstaComponent, TiktokComponent, YoutubeComponent, LinkedinComponent} from './UserNameComponents';
-import { validateOnNext } from 'helpers/formValidation/validate';
 // context
 import CreatorContext from 'context/FormContext/CreatorContext';
 
@@ -89,7 +88,7 @@ const FormSocialI = () => {
         <StyledAccountNames>
           {
           // map through the media array and have the components indexed in an object, for each of the components, 
-            media.map(el => {
+            media.length > 0 && media.map(el => {
               return(
                 <motion.div key={el} layoutId={el}>
                 {
