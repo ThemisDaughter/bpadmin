@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { globalVars }from 'styles/globalStyles'
+// import { globalVars }from 'styles/globalStyles'
 
 interface IProps {
   xstart: number;
