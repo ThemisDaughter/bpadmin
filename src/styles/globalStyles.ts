@@ -4,7 +4,20 @@ export const globalVars = {
   brandColor: '#5485b2',
   primaryColor: 'black',
   lightBg: 'rgb(245, 255, 250)',
+  darkBg: '#284158',
   seethroughBg: 'rgba(245, 255, 250, 0.8)',
+  margins: {
+    inner: {
+      sm: '3px .5rem',
+      md: '.5rem 2rem',
+      lg: '1rem 3rem'
+    },
+    outer: {
+      sm: '3px .5rem',
+      md: 'auto 10vw',
+      lg: 'auto 15vw'
+    }
+  },
   breakpoint: {
     xs: '480px',
     sm: '768px',

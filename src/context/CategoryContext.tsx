@@ -16,12 +16,12 @@ export const CategoryProvider= ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     (async () => {
+      console.log('fetching categories')
       const categories = await getCategoriesOnly();
       categories && setCategories(categories)
     })()
   }, [])
   
-  categories && console.log('categories:', categories)
   
   return (
     <CategoryContext.Provider value={{ categories }} >

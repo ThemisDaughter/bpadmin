@@ -6,6 +6,7 @@ import FormConfirm from '../components/formComponents/FormConfirm';
 import CreatorContext from '../context/FormContext/CreatorContext';
 import { StyledPaper } from '../styles/styledPaper';
 import { StyledFormBackground, StyledButtonsContainer } from '../styles/styledFormComponents';
+import { SolidButton } from 'styles/styledSharedComponents/styledButtons';
 import { contactValidator, creatorPersonalValidator, socialMediaValidator } from 'helpers/formValidation/validators'
 import { validateOnNext } from 'helpers/formValidation/validate';
 const AnmeldungPage = () => {
@@ -54,11 +55,13 @@ const AnmeldungPage = () => {
             }
           
         <StyledButtonsContainer>
-            <button className='left' onClick={handleClickBack}>zurück</button>
+            <SolidButton className='left' onClick={handleClickBack}>zurück</SolidButton>
                 {
               stage === 3
-              ? <input type='submit' value='bestätigen' className={`form-btn-right`} />
-                    : <button className={`form-btn-right`} onClick={handleClickForward}>weiter</button>
+                    ? <SolidButton>
+                      <input type='submit' value='bestätigen' className={`removeStyling`} />
+                    </SolidButton>
+                    : <SolidButton className={`form-btn-right`} onClick={handleClickForward}>weiter</SolidButton>
             }
         </StyledButtonsContainer>
         </form>

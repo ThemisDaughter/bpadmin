@@ -21,7 +21,6 @@ const FormPersonalI = () => {
   const onFocus = (field: HTMLInputElement) => {
     setIsUserError(false);
     removeErrorMessage(field);
-    console.log(isUserError)
   }
   
   return (
