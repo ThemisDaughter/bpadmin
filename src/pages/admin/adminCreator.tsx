@@ -6,7 +6,6 @@ import CategoryListComponent from 'components/adminComponents/reuseableGridCompo
 import SocialMediaList from 'components/SocialMediaList';
 import CreatorInfoTable from 'components/adminComponents/CreatorInfoTable';
 import CreatorT from 'types/creatorTypes';
-import { act } from 'react-dom/test-utils';
 
 const AdminCreatorComponent = () => {
 
@@ -29,7 +28,7 @@ const AdminCreatorComponent = () => {
       setActiveCreator(creator);
     }
     getCreator();
-  }, []);
+  }, [creatorId]);
 
 
   return (
