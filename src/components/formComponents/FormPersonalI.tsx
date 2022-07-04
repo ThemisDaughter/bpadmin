@@ -9,7 +9,7 @@ import CreatorContext from 'context/FormContext/CreatorContext';
 
 const FormPersonalI = () => {
 
-  const { personal, updatePersonal, setIsUserError, isUserError } = useContext(CreatorContext);
+  const { personal, updatePersonal, setIsUserError } = useContext(CreatorContext);
   
   const todayDate = new Date();
   const minDate = format(subYears(todayDate, 100), 'yyyy-MM-dd');
@@ -21,7 +21,6 @@ const FormPersonalI = () => {
   const onFocus = (field: HTMLInputElement) => {
     setIsUserError(false);
     removeErrorMessage(field);
-    console.log(isUserError)
   }
   
   return (
