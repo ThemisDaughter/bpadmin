@@ -54,8 +54,6 @@ const FormSocialI = () => {
     element && element.focus();
   }
   
-  console.log(media)
-
   return (
     <StyledFormGrid>
       <StyledFormHeading>Meine Medien:</StyledFormHeading>

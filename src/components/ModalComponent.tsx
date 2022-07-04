@@ -1,7 +1,7 @@
 import React from 'react';
 import StyledModal from 'styles/styledSharedComponents/styledModal'
 import ReactDOM from 'react-dom';
-import { StyledSecondaryBtn } from 'styles/styledSharedComponents/styledButtons';
+import { StyledOutlineBtn } from 'styles/styledSharedComponents/styledButtons';
 import { StyledPaper } from 'styles/styledPaper';
 
 interface Props {
@@ -19,7 +19,7 @@ const ModalComponent = ({ children, show, onClose }: Props) => {
       <StyledPaper>
         <div className='header'>
           <div></div>
-        <StyledSecondaryBtn onClick={ (e) => onClose(e) }>X</StyledSecondaryBtn>
+        <StyledOutlineBtn onClick={ (e) => onClose(e) }>X</StyledOutlineBtn>
       </div>
         <div className='body'>
          {children}
