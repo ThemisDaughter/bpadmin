@@ -10,7 +10,6 @@ import CreatorT from 'types/creatorTypes';
 const AdminCreatorComponent = () => {
 
   const { creatorId } = useParams();
-  console.log('params here >>>>>>>>>>>>>>', creatorId)
 
 // get the creator (again) from the database - caching would be helpful later...
 // if the creator is new, the only option is to look at the images (zoom in) and see some

@@ -4,50 +4,66 @@ import {
   StyledFormGrid,
   StyledFormHeading
 } from '../../styles/styledFormComponents';
-import {StyledConfirmationSection} from 'styles/styledFormComponents/styledConfirmationSection';
+import { StyledConfirmationSection } from 'styles/styledFormComponents/styledConfirmationSection';
 
 
 const FormConfirm = () => {
+
   const { personal, contact } = useContext(CreatorContext);
+
 
   return (
     <StyledFormGrid>
 
       <StyledFormHeading>Übersicht</StyledFormHeading>
       <StyledConfirmationSection>
-      <h3 className='title'>Persönlich</h3>
+        <h3 className='title'>Persönlich</h3>
         <div className='field'>
-          <span className='key'>Name: </span><span className='value'>{ `${personal.creator_first_name} ${personal.creator_last_name}` }</span>
+          <span className='key'>Name: </span><span className='value'>{`${personal.creator_first_name} ${personal.creator_last_name}`}</span>
         </div>
         <div className='field'>
-          <span className='key'>Adresse: </span><span className='value'>{ `${personal.creator_address}` }</span>
+          <span className='key'>Adresse: </span><span className='value'>{`${personal.creator_address}`}</span>
         </div>
         <div className='field'>
-          <span className='key'>Wohnort: </span><span className='value'>{ `${personal.creator_postcode} ${personal.creator_city}` }</span>
+          <span className='key'>Wohnort: </span><span className='value'>{`${personal.creator_postcode} ${personal.creator_city}`}</span>
         </div>
         <div className='field'>
-          <span className='key'>Geburtstag: </span><span className='value'>{ `${personal.creator_birthday}` }</span>
+          <span className='key'>Geburtstag: </span><span className='value'>{`${personal.creator_birthday}`}</span>
         </div>
         <h3 className='title'>Soziale Medien</h3>
         <div className='field'>
-         <span className='key'>hier kommt eine Liste der Medien: </span><span className='value'>{  }</span>
+          <span className='key'>Soziale Medien: </span>
+
+          <span className='value'><>{
+            (() => {
+              // type K = keyof SocialT;
+              // const keys:K[]  = Object.keys(social); //oh well, it almost worked... I won't use enums though!
+              const keys= Object.keys(social)
+             return keys.map((e, i) => {
+                return i % 2 === 0
+                  // @ts-ignore
+                  ? (<p key={`${i}${e}`}>{social[keys[i + 1]]}</p>)
+                  : null
+              })
+            })()
+          }</></span>
         </div>
         <div className='field'>
-          <span className='key'>und der Rubriken: </span><span className='value'>{  }</span>
+          <span className='key'>und der Rubriken: </span><span className='value'>{ }</span>
         </div>
         <h3 className='title'>Kontaktangaben</h3>
         <div className='field'>
-          <span>E-Mail</span><span>{ `${contact.creator_email}` }</span>
+          <span>E-Mail</span><span>{`${contact.creator_email}`}</span>
         </div>
         <div className='field'>
-          <span>Telefon</span><span>{ `${contact.creator_phone}` }</span>
+          <span>Telefon</span><span>{`${contact.creator_phone}`}</span>
         </div>
         <div>
-          <span>Nachricht</span><div className='field'>{ `${contact.creator_message}` }</div>
+          <span>Nachricht</span><div className='field'>{`${contact.creator_message}`}</div>
         </div>
-        
+
       </StyledConfirmationSection>
-      
+
     </StyledFormGrid>
   )
 }
