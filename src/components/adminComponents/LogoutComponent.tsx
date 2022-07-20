@@ -1,4 +1,4 @@
-import { adminLogout } from 'helpers/apiService/admin.servics';
+import { adminLogout } from 'helpers/apiService/admin.service';
 import { StyledLinkBtn } from 'styles/styledSharedComponents/styledButtons';
 import StyledLogout from 'styles/styledAdminComponents/StyledLogout';
 

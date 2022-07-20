@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledErrorMessage, StyledFormBackground, StyledLogin } from 'styles/styledFormComponents/index';
-import { adminLogin } from 'helpers/apiService/admin.servics';
+import { adminLogin } from 'helpers/apiService/admin.service';
 
 const AdminLoginPage = () => {
 
