@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import LogoutComponent from '../../components/adminComponents/LogoutComponent'
 import { IoIosArrowForward } from 'react-icons/io';
 import { StyledAdminWindow, StyledToggleContainer } from '../../styles/styledAdminComponents';
 import AdminSidebar from '../../components/adminComponents/adminSidebar';
@@ -11,7 +12,8 @@ const AdminComponent = () => {
   return (
 
      
-        <StyledAdminWindow>
+    <StyledAdminWindow>
+      <LogoutComponent />
       <AnimatePresence>
     {
       isSidebarToggled

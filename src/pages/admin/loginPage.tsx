@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledErrorMessage, StyledFormBackground, StyledLogin } from 'styles/styledFormComponents/index';
-import { adminLogin } from 'helpers/apiService/admin.servics';
+import { adminLogin } from 'helpers/apiService/admin.service';
+// import AuthContext from 'context/AuthContext';
 
 const AdminLoginPage = () => {
 
@@ -15,12 +16,13 @@ const AdminLoginPage = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
       const data = await adminLogin({ username, password });
-    if (data) {
+    if (data && data.userRole) {
       console.log('data from server  ', data)
-      sessionStorage.setItem("user role", data.userRole);
+      //checking if the data returned from the object has a user role and setting localStorage user role to userRole for sync page changes (the data is protected serverside)
       navigate('/admin')
     } else {
       setIsLoginFailed(true)
+      console.log('error page shall be displayed', data)
     }
   }
 
