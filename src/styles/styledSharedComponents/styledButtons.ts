@@ -28,4 +28,9 @@ border-radius: 3px;
 border: 1px solid ${globalVars.lightBg};
 `
 
-export { StyledButton, StyledOutlineBtn, SolidButton };
+const StyledLinkBtn = styled(StyledButton)`
+background-color: transparent;
+color: white;
+border: none;`
+
+export { StyledButton, StyledOutlineBtn, SolidButton, StyledLinkBtn };

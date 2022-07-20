@@ -15,12 +15,14 @@ const AdminLoginPage = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
       const data = await adminLogin({ username, password });
-    if (data) {
+    if (data && data.userRole) {
       console.log('data from server  ', data)
+      //checking if the data returned from the object has a user role and setting localStorage user role to userRole for sync page changes (the data is protected serverside)
       sessionStorage.setItem("user role", data.userRole);
       navigate('/admin')
     } else {
       setIsLoginFailed(true)
+      console.log('error page shall be displayed', data)
     }
   }
 
