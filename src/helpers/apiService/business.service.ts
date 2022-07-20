@@ -5,8 +5,12 @@ const baseUrl = process.env.REACT_APP_BASE_URL
 const businessApi:any = {};
 
 businessApi.postBusiness = async (newBusiness: BusinessT) => {
-  const response = await axios.post(`${baseUrl}/admin/businesses`, newBusiness, { withCredentials: true });
-  return response;
+  try {
+    const response = await axios.post(`${baseUrl}/admin/businesses`, newBusiness, { withCredentials: true });
+    return response;
+  } catch (err) {
+    return err;
+  }
 }
 businessApi.getBusinesses = async () => {
   const response = await axios.get(`${baseUrl}/admin/businesses`, { withCredentials: true });

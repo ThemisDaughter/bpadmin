@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StyledErrorMessage, StyledFormBackground, StyledLogin } from 'styles/styledFormComponents/index';
 import { adminLogin } from 'helpers/apiService/admin.service';
+// import AuthContext from 'context/AuthContext';
 
 const AdminLoginPage = () => {
 
@@ -18,7 +19,6 @@ const AdminLoginPage = () => {
     if (data && data.userRole) {
       console.log('data from server  ', data)
       //checking if the data returned from the object has a user role and setting localStorage user role to userRole for sync page changes (the data is protected serverside)
-      sessionStorage.setItem("user role", data.userRole);
       navigate('/admin')
     } else {
       setIsLoginFailed(true)
