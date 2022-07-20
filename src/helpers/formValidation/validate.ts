@@ -43,9 +43,6 @@ const validateOnNext = (formData: { [x: string]: any }, validator: { [s: string]
     const formValue = formData[key];
     // checking for dependencies first
     if (value.dependentOn && formData[value.dependentOn.valid] && !formValue) {
-      console.log('if dependency is empty is running')
-      console.log('going to run error function', key)
-
       setError(`${key}_error`, value.dependentOn.errorMessage);
       return false;
     }
@@ -90,7 +87,6 @@ const validateField = (field: HTMLInputElement, validator: { [s: string]: { [v: 
     if (condition === 'allowedCharacters' && !checkAllowedCharacters(field.value, returning.valid)) {
       const errorSpan = document.getElementById(`${field.id}_error`);
       errorSpan!.innerText = returning.errorMessage;
-      console.log('error for invalid chars, ', field.value, '')
       return false
     };
       // if (condition === 'maxLength' && formValue.length > valid) return {isValid: false, errorMessage: errorMessage, formField: key };
